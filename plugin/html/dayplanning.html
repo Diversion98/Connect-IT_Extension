@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>Connect-IT SFX Dagplanning</title>
+    <!-- Basics & CSS -->
+    <link rel="stylesheet" href="../css/dayplanning.css">
+    <script src="../scripts/jquery-3.7.0.js"></script>
+
+    <!-- Core -->
+    <script src="../scripts/backup.js"></script>
+</head>
+<body>
+    <h1>Dagplanning</h1>
+    <p>
+        Een kopie van je dagplanning, voor als SFX down is.<br>
+        <span style="color:red;">Dit is je laatst bekeken dagplanning, hou er rekening mee dat de planning misschien nog aanpassingen kan doen!</span>
+    </p>
+    <h3><b>Timestamp:</b> <span id="timestamp"></span></h3>
+    <table id="tPlanning">
+        <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Klantnummer</th>
+                <th>Klantnaam</th>
+                <th>Tijdslot</th>
+                <th>Adres</th>
+                <th>Type Afspraak</th>
+                <th>Contact</th>
+            </tr>
+        </thead>
+        <tbody id="tasks">
+        </tbody>
+    </table>
+</body>
+</html>

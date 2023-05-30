@@ -1,0 +1,141 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, ".SFNSText-Regular", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+    width: 300px;
+    background: rgb(125,119,240);
+    background: linear-gradient(90deg, rgba(125,119,240,1) 0%, rgba(166,166,232,1) 35%, rgba(17,199,237,1) 100%);
+}
+
+.plugin-title {
+    text-align: center;
+}
+
+.toggle {
+    cursor: pointer;
+    display: inline-block;
+    /*margin-left: 7.5%;*/
+}
+
+.toggle-switch {
+    display: inline-block;
+    background: #ccc;
+    border-radius: 16px;
+    width: 58px;
+    height: 32px;
+    position: relative;
+    vertical-align: middle;
+    transition: background 0.25s;
+}
+
+.toggle-switch:before, .toggle-switch:after {
+    content: "";
+}
+
+.toggle-switch:before {
+    display: block;
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: left 0.25s;
+}
+
+.toggle:hover .toggle-switch:before {
+    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.toggle-checkbox:checked + .toggle-switch {
+    background: #56c080;
+}
+
+    .toggle-checkbox:checked + .toggle-switch:before {
+        left: 30px;
+    }
+
+.toggle-checkbox {
+    position: absolute;
+    visibility: hidden;
+}
+
+.toggle-label {
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+a {
+    border: 1px solid orange;
+    font-size: 18px;
+    width: calc(100% - 5px);
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    margin: 0px;
+    text-decoration: none;
+    color: white;
+    padding-left: 5px;
+}
+
+    a:hover {
+        color: orange;
+        font-weight: bold;
+        border: 1px solid rgb(255,100,0);
+        background: rgb(70,70,70);
+    }
+
+
+/* Specials */
+
+.a_cafe:hover {
+    border: 1px solid #cce0ee;
+    background: #004173;
+    color: white;
+}
+
+.a_wiki:hover {
+    border: 1px solid #c66628;
+    background: white;
+    color: #c66628;
+}
+
+.a_ants:hover {
+    border: 1px solid rgb(196,196,196);
+    background: rgb(140,0,50);
+    color: white;
+}
+
+.a_saportal:hover {
+    border: 1px solid rgb(196,196,196);
+    background: #008853;
+    color: white;
+}
+
+.a_saportal_vision:hover {
+    border: 1px solid rgb(196,196,196);
+    background: #008853;
+    color: white;
+}
+
+.a_pm:hover {
+    border: 1px solid black;
+    background: white;
+    color: black;
+}
+
+.a_notifs:hover {
+    border: 1px solid blue;
+    background: yellow;
+    color: blue;
+}

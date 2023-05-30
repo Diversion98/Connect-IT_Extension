@@ -1,0 +1,38 @@
+body {
+    background: rgb(33,33,33);
+    color: white;
+}
+
+#tPlanning {
+    width: 100%;
+    border-collapse: collapse;
+    word-break: break-word;
+    font-size: 12px;
+}
+
+    #tPlanning thead {
+        background: rgb(55,55,55);
+    }
+
+    #tPlanning th {
+        border: 1px solid white;
+        border-bottom: 3px solid white;
+    }
+
+    #tPlanning td {
+        border: 1px solid white;
+        background: rgb(88,88,88);
+    }
+
+    #tPlanning tbody tr {
+        min-height: 50px;
+    }
+
+#timestamp {
+    background: rgb(111,111,111);
+    height: 30px;
+    display: inline-block;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

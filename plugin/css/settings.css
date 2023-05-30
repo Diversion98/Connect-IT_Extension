@@ -1,0 +1,14 @@
+
+td {
+    border: 1px solid black;
+}
+
+body, textarea {
+    background: rgb(33,33,33);
+    color: white;
+}
+
+a, a:visited, a:hover {
+    font-weight: bold;
+    color: white;
+}
