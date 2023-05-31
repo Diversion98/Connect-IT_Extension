@@ -31,13 +31,13 @@
   ],
   "content_scripts": [
     {
-      "js": [ "scripts/jquery-3.7.0.js", "scripts/bg.js", "scripts/backup.js" ],
+      "js": [ "scripts/jquery-3.7.0.js", "scripts/backup.js" ],
       "matches": [ "<all_urls>" ],
       "run_at": "document_start"
     },
     {
       "js": [ "scripts/workorder.js" ],
-      "matches": [ "https://webclient.unit-t.eu/workorders/perform/*" ],
+      "matches": [ "https://webclient.unit-t.eu/workorders/perform/*", "https://brasserie-connect-it.be/afmeld-tool-telenet/" ],
       "run_at": "document_start"
     },
     {
@@ -55,61 +55,3 @@
     "default_popup": "popup/popup.html"
   }
 }
-
-//v3
-/*
-{
-  "action": {
-    "default_popup": "popup/popup.html"
-  },
-  "author": "Van Nuffel Dylan",
-  "background": {
-    "service_worker": "scripts/background.js"
-  },
-  "content_scripts": [
-    {
-      "js": [ "scripts/jquery-3.7.0.js", "scripts/bg.js", "scripts/backup.js" ],
-      "matches": [ "<all_urls>" ],
-      "run_at": "document_start"
-    },
-    {
-      "js": [ "scripts/workorder.js" ],
-      "matches": [ "https://webclient.unit-t.eu/workorders/perform/*" ],
-      "run_at": "document_start"
-    },
-    {
-      "js": [ "scripts/login.js" ],
-      "matches": [ "https://webclient.unit-t.eu/users/login" ],
-      "run_at": "document_end"
-    }
-  ],
-  "web_accessible_resources": [
-    {
-      "resources": [ "scripts/dagplanning.js" ],
-      "matches": [ "<all_urls>" ]
-    }
-  ],
-  "description": "Custom SFX plugin made for Connect-IT",
-  "host_permissions": [
-    "https://spot.prd.apps.telenet.be/*",
-    "https://webclient.unit-t.eu/*",
-    "https://cafe.prd.apps.telenet.be/*",
-    "https://cafe.uat.apps.telenet.be/*",
-    "https://webclient.unit-t.eu/js/JFS.Components/telenet-layout/tech.js"
-  ],
-  "icons": {
-    "96": "/images/logo.png"
-  },
-  "manifest_version": 3,
-  "name": "Connect-IT SFX",
-  "permissions": [
-    "tabs",
-    "storage",
-    "activeTab",
-    "alarms",
-    "webRequest",
-    "cookies",
-    "scripting"
-  ],
-  "version": "0.0.1"
-}*/
