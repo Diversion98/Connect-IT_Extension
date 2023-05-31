@@ -17,7 +17,7 @@ function injectCode(src) {
 }
 
 if (window.location.href === "https://webclient.unit-t.eu/workorders/index" || window.location.href === "https://webclient.unit-t.eu/workorders") {
-    chrome.storage.sync.get({ blockScript: false }, function (settings) {
+    chrome.storage.local.get({ blockScript: false }, function (settings) {
         if (settings.blockScript) {
             injectCode(chrome.runtime.getURL('scripts/dagplanning.js'));
         }

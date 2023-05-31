@@ -53,11 +53,11 @@ $(document).ready(function () {
     var toggleLogin = document.getElementById("toggle-login");
 
     // Retrieve the stored state and update the toggle switch
-    chrome.storage.sync.get({ blockScript: false }, function (settings) {
+    chrome.storage.local.get({ blockScript: false }, function (settings) {
         togglePlanning.checked = settings.blockScript;
     });
 
-    chrome.storage.sync.get({ autoLogin: false }, function (settings) {
+    chrome.storage.local.get({ autoLogin: false }, function (settings) {
         toggleLogin.checked = settings.autoLogin;
     });
 
@@ -65,7 +65,7 @@ $(document).ready(function () {
         var blockScript = togglePlanning.checked;
 
         // Store the state in extension storage and reload tab if the website is open
-        chrome.storage.sync.set({ blockScript: blockScript }, function () {
+        chrome.storage.local.set({ blockScript: blockScript }, function () {
             chrome.runtime.sendMessage({ reloadPlanningTab: true });
         });
     });
@@ -74,7 +74,7 @@ $(document).ready(function () {
         var autoLogin = toggleLogin.checked;
 
         // Store the state in extension storage
-        chrome.storage.sync.set({ autoLogin: autoLogin }, function () {
+        chrome.storage.local.set({ autoLogin: autoLogin }, function () {
             chrome.runtime.sendMessage({ reloadLoginTab: true });
         });
     });
