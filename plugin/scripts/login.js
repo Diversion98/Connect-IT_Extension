@@ -1,9 +1,9 @@
 //auto login for sfx
 $(document).ready(function () {
-    chrome.storage.local.get({ autoLogin: false }, function (settings) {
+    chrome.storage.sync.get({ autoLogin: false }, function (settings) {
         console.log(settings.autoLogin);
         if (settings.autoLogin) {
-            chrome.storage.local.get({ inputData: {} }, function (data) {
+            chrome.storage.sync.get({ inputData: {} }, function (data) {
                 var storedData = data.inputData;
                 if (Object.keys(storedData).length !== 0) {
                     var username = storedData.wcUname;
