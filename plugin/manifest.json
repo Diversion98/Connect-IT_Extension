@@ -37,12 +37,17 @@
     },
     {
       "js": [ "scripts/workorder.js" ],
-      "matches": [ "https://webclient.unit-t.eu/workorders/perform/*", "https://brasserie-connect-it.be/afmeld-tool-telenet/" ],
+      "matches": [ "https://webclient.unit-t.eu/workorders/perform/*" ],
       "run_at": "document_start"
     },
     {
       "js": [ "scripts/login.js" ],
       "matches": [ "https://webclient.unit-t.eu/users/login" ],
+      "run_at": "document_end"
+    },
+    {
+      "js": [ "scripts/brasserie.js" ],
+      "matches": [ "*://brasserie-connect-it.be/afmeld-tool-telenet/" ],
       "run_at": "document_end"
     },
     {

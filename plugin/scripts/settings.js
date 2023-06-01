@@ -6,11 +6,13 @@ $(document).ready(function () {
     // Store the user input
     var wcUname = document.getElementById("wc_uname");
     var wcPass = document.getElementById("wc_pass");
+    var techId = document.getElementById("tech_nr");
 
     // Retrieve the stored data and update the input fields
     chrome.storage.sync.get({ autoLogin: false, inputData: {} }, function (settings) {
         wcUname.value = settings.inputData.wcUname;
         wcPass.value = settings.inputData.wcPass;
+        techId.value = settings.inputData.techID;
     });
 
     wcUname.addEventListener("input", function () {
@@ -31,6 +33,17 @@ $(document).ready(function () {
         chrome.storage.sync.get({ inputData: {} }, function (data) {
             var inputData = data.inputData || {};
             inputData.wcPass = wcPassValue;
+            chrome.storage.sync.set({ inputData: inputData });
+        });
+    });
+
+    techId.addEventListener("input", function () {
+        var techIdValue = techId.value;
+
+        // Store the techId value in extension storage
+        chrome.storage.sync.get({ inputData: {} }, function (data) {
+            var inputData = data.inputData || {};
+            inputData.techID = techIdValue;
             chrome.storage.sync.set({ inputData: inputData });
         });
     });

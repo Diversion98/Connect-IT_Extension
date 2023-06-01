@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\plugin",
+    "\\plugin\\html",
+    "\\plugin\\popup",
+    "\\plugin\\scripts"
   ],
-  "SelectedNode": "\\C:\\Users\\dylan.DESKTOP-OFIH8FV\\Source\\Repos\\Connect-IT_Extension",
+  "SelectedNode": "\\plugin\\html\\settings.html",
   "PreviewInSolutionExplorer": false
 }

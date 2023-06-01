@@ -49,12 +49,12 @@ $(document).ready(function () {
         return false;
     });
 
-  // Retrieve the stored state and update the toggle switch
-  var togglePlanning = document.getElementById("toggle-dagplanning");
+    // Retrieve the stored state and update the toggle switch
+    var togglePlanning = document.getElementById("toggle-dagplanning");
     var toggleLogin = document.getElementById("toggle-login");
 
     // Retrieve the stored state and update the toggle switch
-    chrome.storage.sync.get({ blockScript: false }, function (settings) {
+    chrome.storage.sync.get({ blockScript: true }, function (settings) {
         togglePlanning.checked = settings.blockScript;
     });
 
