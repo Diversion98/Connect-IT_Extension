@@ -1,5 +1,5 @@
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    chrome.storage.sync.get({ inputData: {} }, function (data) {
+    chrome.storage.local.get({ inputData: {} }, function (data) {
         $(document).ready(function () {
             if (message.getTaskdetails) {
                 //var klantid = ;
@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 });
 
 $(document).ready(function () {
-    chrome.storage.sync.get({ inputData: {} }, function (data) {
+    chrome.storage.local.get({ inputData: {} }, function (data) {
         var techid = data.inputData.techID;
         document.getElementById("techid").value = techid;
     });

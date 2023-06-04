@@ -34,6 +34,10 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             });
         });
     }
+
+    if (message.openSettingsPage) {
+        chrome.tabs.create({ url: "html/settings.html" });
+    }
 });
 
 //block tech script

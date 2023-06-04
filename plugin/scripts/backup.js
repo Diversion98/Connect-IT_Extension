@@ -4,14 +4,13 @@ window.addEventListener("message", function (event) {
 
     //clear and set extension storage
     var planning = JSON.parse(localStorage.getItem('planning'));
-    chrome.storage.sync.clear();
-    chrome.storage.sync.set({planning: planning});
+    chrome.storage.local.clear();
+    chrome.storage.local.set({planning: planning});
 });
 
-window.onload = () => {
-    //var time = planning.savetime;
-    //if (window.location.href === "https://webclient.unit-t.eu/workorders/index") {
-        chrome.storage.sync.get('planning', function (result) {
+if (window.location.href === "chrome-extension://jbkjciamkjjfnalbacdnkifommldfabd/html/dayplanning.html") {
+    window.onload = () => {
+        chrome.storage.local.get('planning', function (result) {
             var task = result.planning;
             var time = task[0].savetime;
 
@@ -32,5 +31,5 @@ window.onload = () => {
 
             $('#tasks').append(rows);
         });
-    //}
-};
+    };
+}

@@ -248,10 +248,13 @@ function styling() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-       
+
     styling();
-    
+
     const tasks = document.getElementsByClassName('task-item');
+
+    //save planning
+    savePlanning(tasks);
 
     // Creating styling
     let st = document.createElement('style');
@@ -261,6 +264,9 @@ document.addEventListener("DOMContentLoaded", function () {
         + '.nav_btn {text-align:center;line-height:40px;border-radius:12px !important;border:1px solid rgb(90,90,90);width:40px;height:40px;background:rgb(140,140,140);cursor:pointer;margin:5px;display:inline-block;}'
         + '.nav_btn img {height:30px;}'
         + '.nav_btn:hover {background:rgb(200,200,255);}'
+        + '.test_btn {text-align:center;line-height:40px;border-radius:12px !important;border:1px solid rgb(90,90,90);width:40px;height:40px;background:rgb(140,140,140);cursor:pointer;margin:5px;display:inline-block;}'
+        + '.test_btn img {height:30px;}'
+        + '.test_btn:hover {background:rgb(200,200,255);}'
         + '.nav_qr {width:200px;height:200px;background:rgb(244,244,244);position:absolute;padding:10px;border:1px solid black;z-index: 9999;}'
         + '.nav_qr img {width:100%;height:100%;}'
         + '.nav_odltime {margin-left:20px;}'
@@ -275,9 +281,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById('workorder-list')?.children[0].remove(); // Remove the header for today's meetings
     document.getElementById('future-workorder-list')?.children[0].remove(); // Remove the header for future meetings
-
-    //save planning
-    savePlanning(tasks);
 
     window.onload = () => {
         var task_cnt = 0;
@@ -346,8 +349,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <div class="nav_qr" style="display:none;" id="link_waze"></div></div>`;
             }
 
-            html += `<div class="nav_btn" id="antsBtn"><p onclick="window.open(\`http://ants.inet.telenet.be/tools/modems/modemtest#modem=` + clientId + `\`)">A</p></div>
-                            <div class="nav_btn" id="spotBtn"><p onclick="window.open(\`https://spot.prd.apps.telenet.be/care/customer/` + clientId + `\`)">S</p></div>
+            //add ants en spot knoppen
+            html += `<div class="test_btn" id="antsBtn"><p onclick="window.open(\`http://ants.inet.telenet.be/tools/modems/modemtest#modem=` + clientId + `\`)">A</p></div>
+                            <div class="test_btn" id="spotBtn"><p onclick="window.open(\`https://spot.prd.apps.telenet.be/care/customer/` + clientId + `\`)">S</p></div>
                             </div></td></tr>`;
 
             html += `
@@ -404,34 +408,34 @@ document.addEventListener("DOMContentLoaded", function () {
                 "sec-fetch-site": "same-origin",
                 "x-requested-with": "XMLHttpRequest"
             },
-            function (json) {
-                // Remarks time!
-                let tgei = json[0].taskGrpExtraInfo[0];
-                let remarkval = '';
-                for (let j = 0; j < tgei.length; j++) {
-                    if (tgei[j].name == 'remark') {
-                        remarkval = tgei[j].value;
-                        break;
+                function (json) {
+                    // Remarks time!
+                    let tgei = json[0].taskGrpExtraInfo[0];
+                    let remarkval = '';
+                    for (let j = 0; j < tgei.length; j++) {
+                        if (tgei[j].name == 'remark') {
+                            remarkval = tgei[j].value;
+                            break;
+                        }
                     }
-                }
 
-                let tei = json[0].taskExtraInfo[0];
-                let planning_remarkval = '';
-                for (let j = 0; j < tei.length; j++) {
-                    if (tei[j].name == 'remark') {
-                        planning_remarkval = tei[j].value;
-                        break;
+                    let tei = json[0].taskExtraInfo[0];
+                    let planning_remarkval = '';
+                    for (let j = 0; j < tei.length; j++) {
+                        if (tei[j].name == 'remark') {
+                            planning_remarkval = tei[j].value;
+                            break;
+                        }
                     }
-                }
 
-                let remark = '';
-                if (planning_remarkval.length > 0) {
-                    remark += 'UNIT-T: ' + planning_remarkval;
-                    if (remarkval.length > 0) remark += '\n\nTELENET: ' + remarkval;
-                } else remark = remarkval;
+                    let remark = '';
+                    if (planning_remarkval.length > 0) {
+                        remark += 'UNIT-T: ' + planning_remarkval;
+                        if (remarkval.length > 0) remark += '\n\nTELENET: ' + remarkval;
+                    } else remark = remarkval;
 
-                document.querySelector('div[tgcode="' + json[0].id + '"]').getElementsByClassName('task_remark')[0].children[0].textContent = remark;
-            });
+                    document.querySelector('div[tgcode="' + json[0].id + '"]').getElementsByClassName('task_remark')[0].children[0].textContent = remark;
+                });
 
             if (workorder_action) {
                 workorder_action.setAttribute('class', workorder_action.getAttribute('class') + ' btn_action');
@@ -482,7 +486,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             // Move the button
             let data_task_id = 0;
-            let data_ticket_details = 0;
             if (btnRemark) {
                 tasks[i].getElementsByClassName('task_btns')[0].appendChild(btnRemark);
                 btnRemark.setAttribute('class', btnRemark.getAttribute('class').split('blue').join('') + ' primary-action-button btn_action');
@@ -505,34 +508,64 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 });
 
+//Save Planning
 function savePlanning(tasks) {
     var planning = [];
 
     //clear backup planning
     localStorage.removeItem('planning');
 
-    // Save current planning
-    console.log("saving planning to local storage...");
+    console.log("saving task to local storage...");
     var today = new Date();
     var time = today.getDate() + "/" + today.getMonth() + "/" + today.getFullYear() + " // " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-
-    for (let i = 0; i < tasks.length; i++) {
-
-        var item = {};
-
-        item.savetime = time;
-        item.customerNumber = tasks[i].getElementsByClassName('ticket-name-data')[0].textContent.split(' - ')[0].trim();
-        item.date = tasks[i].getElementsByClassName('date')[0].lastChild.textContent.trim();
-        item.time = tasks[i].getElementsByClassName('time')[0].textContent.trim();
-        item.customerName = tasks[i].getElementsByClassName('ticket-name-data')[0].parentElement.parentElement.children[2].textContent.trim();
-        item.address = tasks[i].getElementsByClassName('ticket-name-data')[0].parentElement.parentElement.children[3].textContent.trim();
-        item.meetingtype = tasks[i].getElementsByClassName('date')[0].firstChild.textContent.trim();
-        //item.contact = tasks[i].querySelector('a[data-target^="#modal_contactdetails_uniqueid_"]').getAttribute('data-ticket-details');
-
-        planning.push(item);
+    function fetchContactDetails(tgcode, ticketid) {
+        return new Promise((resolve, reject) => {
+            ml.get('/tasks/contactDetails/' + tgcode + '/' + ticketid + '/2?_=' + Date.now(), {
+                "accept": "application/json, text/javascript, */*; q=0.01",
+                "accept-language": "nl-NL,nl;q=0.9",
+                "cache-control": "no-cache",
+                "pragma": "no-cache",
+                "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"102\", \"Google Chrome\";v=\"102\"",
+                "sec-ch-ua-mobile": "?0",
+                "sec-ch-ua-platform": "\"Windows\"",
+                "sec-fetch-dest": "empty",
+                "sec-fetch-mode": "cors",
+                "sec-fetch-site": "same-origin",
+                "x-requested-with": "XMLHttpRequest"
+            }, function (json) {
+                let contact = '';
+                if (json[Object.keys(json)[0]].length !== 0) {
+                    contact = json[Object.keys(json)[0]][0].value;
+                }
+                resolve(contact);
+            });
+        });
     }
 
-    localStorage.setItem('planning', JSON.stringify(planning));
-    window.postMessage(JSON.parse(localStorage.getItem('planning')), '*');
+    async function fetchTasksData() {
+        for (let i = 0; i < tasks.length; i++) {
+            var item = {};
+            let tgcode = tasks[i].getElementsByClassName('arrow-container')[0].getAttribute('data-task-id');
+
+            item.savetime = time;
+            item.customerNumber = tasks[i].getElementsByClassName('ticket-name-data')[0].textContent.split(' - ')[0].trim();
+            item.date = tasks[i].getElementsByClassName('date')[0].lastChild.textContent.trim();
+            item.time = tasks[i].getElementsByClassName('time')[0].textContent.trim();
+            item.customerName = tasks[i].getElementsByClassName('ticket-name-data')[0].parentElement.parentElement.children[2].textContent.trim();
+            item.address = tasks[i].getElementsByClassName('ticket-name-data')[0].parentElement.parentElement.children[3].textContent.trim();
+            item.meetingtype = tasks[i].getElementsByClassName('date')[0].firstChild.textContent.trim();
+
+            let ticketid = tasks[i].querySelector('a[data-target^="#modal_contactdetails_uniqueid_"]').getAttribute('data-ticket-details');
+            let contact = await fetchContactDetails(tgcode, ticketid);
+            item.contact = contact;
+
+            planning.push(item);
+        }
+
+        localStorage.setItem('planning', JSON.stringify(planning));
+        window.postMessage(JSON.parse(localStorage.getItem('planning')), '*');
+    }
+
+    fetchTasksData();
 }
