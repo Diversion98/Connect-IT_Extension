@@ -9,26 +9,41 @@
     <script src="../scripts/backup.js"></script>
 </head>
 <body>
-    <h1>Dagplanning</h1>
-    <p>
-        Een kopie van je dagplanning, voor als SFX down is.<br>
-        <span style="color:red;">Dit is je laatst bekeken dagplanning, hou er rekening mee dat de planning misschien nog aanpassingen kan doen!</span>
-    </p>
-    <h3><b>Timestamp:</b> <span id="timestamp"></span></h3>
-    <table id="tPlanning">
-        <thead>
-            <tr>
-                <th>Datum</th>
-                <th>Klantnummer</th>
-                <th>Klantnaam</th>
-                <th>Tijdslot</th>
-                <th>Adres</th>
-                <th>Type Afspraak</th>
-                <th>Contact</th>
-            </tr>
-        </thead>
-        <tbody id="tasks">
-        </tbody>
-    </table>
+    <header>
+        <div class="head">
+            <h1 id="plugin-title">Connect-IT SFX Noodlijst</h1>
+        </div>
+        <h4 id="plugin-subtitle">Make Smartfix smart!</h4>
+        <hr>
+    </header>
+    <main>
+        <p>
+            Een kopie van je dagplanning, voor als SFX down is.<br>
+            <span style="color:red;">Dit is je laatst bekeken dagplanning, hou er rekening mee dat de planning misschien nog aanpassingen kan doen!</span><br>
+            <span style="color:red;">Controleer dus zeker ook de noodlijst van Unit-t zelf om misverstanden te voorkomen:</span> <a href="https://app.powerbi.com/groups/me/apps/0a8ad196-b958-487c-b785-ad92e6d1de65/reports/cfcd5539-2567-404c-88e4-396b4c4320cc/ReportSectiond8da218fc71cd4f0c0d7"><span>Noodlijst Unit-t</span></a>
+        </p>
+        <h3><b>Timestamp:</b> <span id="timestamp"></span></h3>
+        <table id="tPlanning">
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>Klantnummer</th>
+                    <th>Klantnaam</th>
+                    <th>Tijdslot</th>
+                    <th>Adres</th>
+                    <th>Type Afspraak</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody id="tasks">
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <div class="centered">
+            <div class="copyright">© 2023 Copyright by Dylan Van Nuffel.</div>
+            <div class="rights">All Rights Reserved.</div>
+        </div>
+    </footer>
 </body>
 </html>

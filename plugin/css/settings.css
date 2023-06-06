@@ -1,14 +1,112 @@
+/* Global Styles */
+body, html {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 10px;
+}
+
+/* Main Styles */
+main {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.instellingen {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-column {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-tech,
+.changelog {
+    flex: 0;
+}
+
+.instellingen,
+.info-tech,
+.changelog {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#plugin-title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+}
+
+#plugin-subtitle {
+    text-align: center;
+    font-size: 12px;
+    color: #333;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+.settings {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+}
 
 td {
-    border: 1px solid black;
+    padding: 10px;
 }
 
-body, textarea {
-    background: rgb(33,33,33);
+h1 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+main h2 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+    margin-left: 1.5%;
+}
+
+main p {
+    margin-left: 1.5%;
+}
+
+/* Footer Styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #5257ff;
+    padding: 10px;
     color: white;
 }
 
-a, a:visited, a:hover {
-    font-weight: bold;
-    color: white;
+.centered {
+    margin-top: 10px;
+}
+
+.rights {
+    margin-top: 5px;
 }

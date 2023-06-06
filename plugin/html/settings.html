@@ -1,33 +1,114 @@
 <html>
-    <head>
-        <title>Settings</title>
-        <link rel="stylesheet" href="../css/settings.css">
-        <script src="../scripts/jquery-3.7.0.js"></script>
-        <script src="../scripts/settings.js"></script>
-    </head>
+<head>
+    <title>Settings</title>
+    <link rel="stylesheet" href="../css/settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="../scripts/jquery-3.7.0.js"></script>
+    <script src="../scripts/settings.js"></script>
+</head>
 
     <body>
-        <h1>Quicklinks</h1>
-        <a href="../html/dayplanning.html">Dagplanning SFX</a><br>
-        <a href="https://app.powerbi.com/groups/me/apps/0a8ad196-b958-487c-b785-ad92e6d1de65/reports/cfcd5539-2567-404c-88e4-396b4c4320cc/ReportSectiond8da218fc71cd4f0c0d7">Noodlijst SFX (Alleen wanneer SFX down is!)</a><br>
+        <header>
+            <div class="head">
+                <h1 id="plugin-title">Connect-IT SFX Settings Page</h1>
+            </div>
+            <h4 id="plugin-subtitle">Make Smartfix smart!</h4>
+            <hr>
+        </header>
+        <main>
+            <div class="left-column">
+                <div class="instellingen">
+                    <h2>Instellingen</h2>
 
-        <h1>Instellingen</h1>
-        <p style="color:red;font-weight:bold;">Vragen of problemen? <a style="color:red;font-weight:bold;" href="https://brasserie-connect-it.be/groups/telenet/">Laat gerust iets weten!</a></p>
+                    <p>Een overzicht van de functies alsook in en uitschakelen vind je hier.</p>
 
-        <p><b>Versie: </b><span id="Plugin_version">----</span></p>
+                    <table width="100%">
+                        <tr><td colspan=2><b>&nbsp;Dagplanning SFX</b></td></tr>
+                        <tr>
+                            <td width="5%"><input type="checkbox" id="cb_cafe_provisioningAntsSmartaid"></td>
+                            <td>
+                                Coming soon: Orders hebben een nieuwe stijl waardoor ze smaller zijn waardoor je dus meer taken kan zien zonder te scrollen.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="5%"><input type="checkbox" id="cb_cafe_darkmode"></td>
+                            <td>
+                                Coming soon: Als de "Accept Workorder" knop wordt ingedrukt, automatisch spot en ants openen
+                            </td>
+                        </tr>
+                        <tr><td><hr></td><td><hr></td></tr>
+                        <tr><td colspan=2><b>&nbsp;Workorder SFX</b></td></tr>
+                        <tr>
+                            <td width="5%"><input type="checkbox" id="cb_cafe_provisioningAntsSmartaid"></td>
+                            <td>
+                                Coming soon: eenvoudiger workorder scherm, weg met al die nutteloze informatie.
+                            </td>
+                        </tr>
+                    </table>
 
-        <h2><b>Info Tech</b></h2>
-        <table width="100%" id="data-table">
-            <tr>
-                <td>
-                    > Technieker nummer: <input class="tbtech" id="tech_nr">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    > Webclient-login: <input class="tbwc" id="wc_uname"> / Wachtwoord: <input class="tbwc" id="wc_pass" type="password">
-                </td>
-            </tr>
-        </table>
+                    <br><br>
+                    <p style="color:red;font-weight:bold;">Vragen of problemen? <a style="color:red;font-weight:bold;" href="https://brasserie-connect-it.be/groups/telenet/">Laat gerust iets weten!</a></p>
+                    <p><b>Plugin versie: </b><span id="Plugin_version">----</span></p>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="info-tech">
+                    <h2><b>Info Tech</b></h2>
+                    <table width="100%" id="data-table">
+                        <tr>
+                            <td>
+                                Technieker nummer: <input class="tbtech" id="tech_nr">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Webclient-login: <input class="tbwc" id="wc_uname"> / Wachtwoord: <input class="tbwc" id="wc_pass" type="password">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="changelog">
+                    <h2><b>Changelog</b></h2>
+                    <table width="100%" id="data-table">
+                        <tr>
+                            <td>
+                                - Dagplanning volledig zichtbaar met aan en uit knop in de popup.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                - Ants en Spot knoppen bij elke taak in dagplanning.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                - Een extra noodlijst van uw laatst bekeken planning van SFX met contactgegeven (de emailadressen als contactgegevens is een fout bij unit-t zelf).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                - Ants en Spot knoppen in de workorder.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                - Auto-login voor op webclient als je de gegevens hebt ingevuld in de instellingen van de plugin.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                - De techniekernummer wordt automatisch ingevuld in de afmeldtool van Brasserie.
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="centered">
+                <div class="copyright">© 2023 Copyright by Dylan Van Nuffel.</div>
+                <div class="rights">All Rights Reserved.</div>
+            </div>
+        </footer>
     </body>
 </html>

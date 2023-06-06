@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="popup.css">
-        <script src="../scripts/jquery-3.7.0.js"></script>
-        <script src="popup.js"></script>
-    </head>
-        <body>
-            <main>
-                <h1 id="plugin-title">Connect-IT SFX Plugin</h1>
+<head>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="../scripts/jquery-3.7.0.js"></script>
+    <script src="popup.js"></script>
+</head>
+    <body>
+        <header>
+            <div class="head">
+                <h1 id="plugin-title">Connect-IT SFX</h1>
+                <a href="html/settings.html" class="fas fa-cog settings"></a>
+            </div>
+            <h4 id="plugin-subtitle">Make Smartfix smart!</h4>
+            <hr>
+        </header>
+        <main>
+            <div id="links">
+                <a href="https://brasserie-connect-it.be/">Brasserie</a><br>
+                <a href="https://comm.unit-t.eu/">Comm.unit-t</a><br>
+                <a href="http://sa-logistics.inet.telenet.be/item/">Materiaalshop</a>
                 <hr>
-                <div id="links">
-                    <a action="_blank" href="html/settings.html">Settings</a><br>
-                    <hr>
-                    <a action="_blank" href="https://brasserie-connect-it.be/">Brasserie</a><br>
-                    <a action="_blank" href="https://comm.unit-t.eu/">Comm.unit-t</a><br>
-                    <a action="_blank" href="http://sa-logistics.inet.telenet.be/item/">Materiaal</a><br>
-                    <hr>
-                    <a action="_blank" class="a_sfx" href="https://webclient.unit-t.eu/workorders/index">SFX</a><br>
-                    <a action="_blank" class="a_cafe" href="https://cafe.prd.apps.telenet.be/afe/be/telenet/afe/installationandrepair/FTLogon.jsp">C@fe</a><br>
-                    <hr>
-                    <a action="_blank" class="a_ants" href="http://ants.inet.telenet.be/">Ants</a><br>
-                    <a action="_blank" class="a_spot" href="http://spot.inet.telenet.be/care/customer">Spot</a><br>
-                    <hr>
-                    <a action="_blank" class="a_pm" href="https://portalft.prd.apps.telenet.be/content/pmelder.php">Probleemmelder</a>
-                    <a action="_blank" class="a_notifs" href="https://portalft.prd.apps.telenet.be/content/subpages/TechPmc/TConsole.php">Mijn Meldingen</a><br>
-                </div>
+                <a class="a_sfx" href="https://webclient.unit-t.eu/workorders/index">SFX</a><br>
+                <a class="a_cafe" href="https://cafe.prd.apps.telenet.be/afe/be/telenet/afe/installationandrepair/FTLogon.jsp">C@fe</a>
+                <hr>
+                <a href="chrome-extension://jbkjciamkjjfnalbacdnkifommldfabd/html/dayplanning.html">Noodlijst SFX</a>
+                <hr>
+            </div>
 
+            <h1>Features</h1>
 
-                <h1>Features</h1>
+            <div>
+                <label class="toggle">
+                    <input class="toggle-checkbox" id="toggle-dagplanning" type="checkbox" checked>
+                    <div class="toggle-switch"></div>
+                    <span class="toggle-label">Dagplanning</span>
+                </label>
 
-                <div>
-                    <label class="toggle">
-                        <input class="toggle-checkbox" id="toggle-dagplanning" type="checkbox" checked>
-                        <div class="toggle-switch"></div>
-                        <span class="toggle-label">Dagplanning</span>
-                    </label>
+                <hr>
 
-                    <hr>
-
-                    <label class="toggle">
-                        <input class="toggle-checkbox" id="toggle-login" type="checkbox">
-                        <div class="toggle-switch"></div>
-                        <span class="toggle-label">Auto Login</span>
-                    </label>
-                </div>
-            </main>
+                <label class="toggle">
+                    <input class="toggle-checkbox" id="toggle-login" type="checkbox">
+                    <div class="toggle-switch"></div>
+                    <span class="toggle-label">Auto Login</span>
+                </label>
+            </div>
+        </main>
         <footer>
+            <div class="centered">
+                <div class="copyright">© 2023 Copyright by Dylan Van Nuffel.</div>
+                <div class="rights">All Rights Reserved.</div>
+             </div>
         </footer>
     </body>
 </html>

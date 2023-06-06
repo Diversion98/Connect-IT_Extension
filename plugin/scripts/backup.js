@@ -14,22 +14,24 @@ if (window.location.href === "chrome-extension://jbkjciamkjjfnalbacdnkifommldfab
             var task = result.planning;
             var time = task[0].savetime;
 
-            $('#timestamp').text(time);
+            if (task && task.length > 0) {
+                $('#timestamp').text(time);
 
-            var rows = '';
-            for (var i = 0; i < task.length; i++) {
-                rows += '<tr>';
-                rows += '   <td>' + task[i].date + '</td>';
-                rows += '   <td>' + task[i].customerNumber + '</td>';
-                rows += '   <td>' + task[i].customerName + '</td>';
-                rows += '   <td>' + task[i].time + '</td>';
-                rows += '   <td>' + task[i].address + '</td>';
-                rows += '   <td>' + task[i].meetingtype + '</td>';
-                rows += '   <td>' + task[i].contact + '</td>';
-                rows += '</tr>';
+                var rows = '';
+                for (var i = 0; i < task.length; i++) {
+                    rows += '<tr>';
+                    rows += '   <td>' + task[i].date + '</td>';
+                    rows += '   <td>' + task[i].customerNumber + '</td>';
+                    rows += '   <td>' + task[i].customerName + '</td>';
+                    rows += '   <td>' + task[i].time + '</td>';
+                    rows += '   <td>' + task[i].address + '</td>';
+                    rows += '   <td>' + task[i].meetingtype + '</td>';
+                    rows += '   <td>' + task[i].contact + '</td>';
+                    rows += '</tr>';
+                }
+
+                $('#tasks').append(rows);
             }
-
-            $('#tasks').append(rows);
         });
     };
 }

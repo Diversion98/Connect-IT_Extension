@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\plugin",
+    "\\plugin\\css",
     "\\plugin\\html",
     "\\plugin\\popup",
     "\\plugin\\scripts"
   ],
-  "SelectedNode": "\\plugin\\manifest.json",
+  "SelectedNode": "\\plugin\\html\\dayplanning.html",
   "PreviewInSolutionExplorer": false
 }
