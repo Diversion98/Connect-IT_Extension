@@ -46,6 +46,11 @@
       "run_at": "document_end"
     },
     {
+      "js": [ "scripts/brasserie.js" ],
+      "matches": [ "https://brasserie-connect-it.be/afmeld-tool-telenet/" ],
+      "run_at": "document_start"
+    },
+    {
       "js": [ "scripts/block.js" ],
       "matches": [ "<all_urls>" ],
       "run_at": "document_start"

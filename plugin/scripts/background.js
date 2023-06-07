@@ -35,6 +35,22 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
         });
     }
 
+    if (message.reloadWorkorderTab) {
+        var tabUrls = [
+            "https://webclient.unit-t.eu/workorders/perform/*"
+        ];
+
+        // Reload the tab if any of the URLs match
+        chrome.tabs.query({}, function (tabs) {
+            tabs.forEach(function (tab) {
+                if (tabUrls.includes(tab.url)) {
+                    console.log("reload tab");
+                    chrome.tabs.reload(tab.id);
+                }
+            });
+        });
+    }
+
     if (message.openSettingsPage) {
         chrome.tabs.create({ url: "html/settings.html" });
     }

@@ -515,7 +515,7 @@ function savePlanning(tasks) {
     //clear backup planning
     localStorage.removeItem('planning');
 
-    console.log("saving task to local storage...");
+    console.log("saving tasks to local storage...");
     var today = new Date();
     var time = today.getDate() + "/" + today.getMonth() + "/" + today.getFullYear() + " // " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 

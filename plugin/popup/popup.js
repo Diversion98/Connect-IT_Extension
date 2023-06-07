@@ -18,7 +18,7 @@ $(document).ready(function () {
         toggleLogin.checked = settings.autoLogin;
     });
 
-    chrome.storage.local.get({ autoLogin: false }, function (settings) {
+    chrome.storage.local.get({ brasserie: false }, function (settings) {
         toggleBrasserie.checked = settings.brasserie;
     });
 
@@ -44,6 +44,9 @@ $(document).ready(function () {
         var brasserie = toggleBrasserie.checked;
 
         // Store the state in extension storage
-        chrome.storage.local.set({ brasserie: brasserie });
+        chrome.storage.local.set({ brasserie: brasserie }, function () {
+            console.log("changed the brasserie state to" + brasserie);
+            chrome.runtime.sendMessage({ reloadWorkorderTab: true });
+        });
     });
 });

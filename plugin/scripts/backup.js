@@ -4,7 +4,9 @@ window.addEventListener("message", function (event) {
 
     //clear and set extension storage
     var planning = JSON.parse(localStorage.getItem('planning'));
-    chrome.storage.local.clear();
+    chrome.storage.local.remove('planning', function () {
+        console.log('Item "planning" has been removed from local storage.');
+    });
     chrome.storage.local.set({planning: planning});
 });
 
