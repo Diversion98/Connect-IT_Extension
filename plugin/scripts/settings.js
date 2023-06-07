@@ -1,4 +1,4 @@
-if (window.location.href === "chrome-extension://jbkjciamkjjfnalbacdnkifommldfabd/html/settings.html") {
+if (window.location.protocol === 'chrome-extension:' && window.location.pathname.endsWith("/html/settings.html")) {
     $(document).ready(function () {
         // Fetch version
         var manifestData = chrome.runtime.getManifest();

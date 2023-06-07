@@ -8,7 +8,7 @@ window.addEventListener("message", function (event) {
     chrome.storage.local.set({planning: planning});
 });
 
-if (window.location.href === "chrome-extension://jbkjciamkjjfnalbacdnkifommldfabd/html/dayplanning.html") {
+if (window.location.protocol === 'chrome-extension:' && window.location.pathname.endsWith('/html/dayplanning.html')) {
     window.onload = () => {
         chrome.storage.local.get('planning', function (result) {
             var task = result.planning;
