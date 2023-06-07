@@ -1,11 +1,9 @@
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    chrome.storage.local.get({ inputData: {} }, function (data) {
-        $(document).ready(function () {
-            if (message.getTaskdetails) {
-                //var klantid = ;
-                //document.getElementById("klantid").value = klantid;
-            }
-        });
+    $(document).ready(function () {
+        if (message.getTaskdetails) {
+            var klantid = '';
+            document.getElementById("klantid").value = klantid;
+        }
     });
 });
 

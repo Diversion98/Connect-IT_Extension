@@ -16,9 +16,14 @@ $(document).ready(function () {
     <div class="go-to-spot" id="spotBtn" style="float: left; margin-left: 10px"><button class="btn blue" style="border: 0px !important; padding: 11px 14px !important;" onclick="window.open(\`https://spot.prd.apps.telenet.be/care/customer/` + clientId + `\`)">Spot</button></div>`);
 
     //open Brasserie and send message for brasserie.js
-    document.getElementById("close_workorder_btn").addEventListener("click", function () {
-        window.open("https://brasserie-connect-it.be/afmeld-tool-telenet/", "_blank", "noopener");
-        //send task data to brasserie
-        //chrome.runtime.sendMessage({ getTaskDetails: true });
+    chrome.storage.local.get({ brasserie: false }, function (settings) {
+        if (settings.brasserie) {
+            document.getElementById("close_workorder_btn").addEventListener("click", function () {
+                window.open("https://brasserie-connect-it.be/afmeld-tool-telenet/", "_blank", "noopener");
+
+                //send task data to brasserie
+                //chrome.runtime.sendMessage({ getTaskDetails: true });
+            });
+        }
     });
 });
