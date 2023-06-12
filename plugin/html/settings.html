@@ -25,29 +25,41 @@
                     <table width="100%">
                         <tr><td colspan=2><b>&nbsp;Dagplanning SFX</b></td></tr>
                         <tr>
-                            <td width="5%"><input type="checkbox" id="changePlanningLayout"></td>
+                            <td width="5%">
+                                <input class="tgl tgl-skewed" id="changePlanningLayout" type="checkbox" />
+                                <label class="tgl-btn" data-tg-off="OFF" data-tg-on="ON" for="changePlanningLayout"></label>
+                            </td>
                             <td>
                                 Coming soon: Orders hebben een nieuwe stijl waardoor ze smaller zijn waardoor je dus meer taken kan zien zonder te scrollen.
                             </td>
                         </tr>
                         <tr>
-                            <td width="5%"><input type="checkbox" id="autoTesting"></td>
+                            <td width="5%">
+                                <input class="tgl tgl-skewed" id="autoTesting" type="checkbox" />
+                                <label class="tgl-btn" data-tg-off="OFF" data-tg-on="ON" for="autoTesting"></label>
+                            </td>
                             <td>
-                                Coming soon: Als de "Accept Workorder" knop wordt ingedrukt, automatisch spot en ants openen
+                                Als de "Accept Workorder" knop wordt ingedrukt, automatisch spot en ants openen
                             </td>
                         </tr>
                         <tr><td><hr></td><td><hr></td></tr>
                         <tr><td colspan=2><b>&nbsp;Workorder SFX</b></td></tr>
                         <tr>
-                            <td width="5%"><input type="checkbox" id="simplifyWorkorder"></td>
+                            <td width="5%">
+                                <input class="tgl tgl-skewed" id="simplifyWorkorder" type="checkbox" />
+                                <label class="tgl-btn" data-tg-off="OFF" data-tg-on="ON" for="simplifyWorkorder"></label>
+                            </td>
                             <td>
                                 Coming soon: eenvoudiger workorder scherm, weg met al die nutteloze informatie.
                             </td>
                         </tr>
                         <tr>
-                            <td width="5%"><input type="checkbox" id="Brasserie"></td>
+                            <td width="5%">
+                                <input class="tgl tgl-skewed" id="Brasserie" type="checkbox" />
+                                <label class="tgl-btn" data-tg-off="OFF" data-tg-on="ON" for="Brasserie"></label>
+                            </td>
                             <td>
-                                Coming soon: Stuur alle gegevens zoals klantennummer door naar Brasserie.
+                                Stuur alle gegevens zoals klantennummer door naar Brasserie.
                             </td>
                         </tr>
                     </table>
@@ -78,27 +90,17 @@
                     <table width="100%" id="data-table">
                         <tr>
                             <td>
-                                - Dagplanning volledig zichtbaar met aan en uit knop in de popup.
+                                - Technr, klantennr en taak status worden automatisch ingevuld in Brasserie als je de optie hebt ingeschakeld in de settings.
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                - Ants en Spot knoppen bij elke taak in dagplanning.
+                                - Ants en Spot worden geopend als de gebruiker op "accept workorder" drukt en de setting aan staat.
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                - Een extra noodlijst van uw laatst bekeken planning van SFX met contactgegeven (de emailadressen als contactgegevens is een fout bij unit-t zelf).
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                - Ants en Spot knoppen in de workorder.
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                - Auto-login voor op webclient als je de gegevens hebt ingevuld in de instellingen van de plugin. (Experimental)
+                                - BUGFFIX: de "Info Tech" zal niet meer leeg staan als je deze hebt ingevuld gehad.
                             </td>
                         </tr>
                     </table>

@@ -297,6 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tasks[i].setAttribute('class', tasks[i].getAttribute('class') + ' sh_task-item');
 
             let html = ``;
+            var taskStatus = '';
 
             // Getting a hold on all the elements needed
             let logo = tasks[i].getElementsByTagName('label')[0];
@@ -306,9 +307,21 @@ document.addEventListener("DOMContentLoaded", function () {
             let customerName = ticket.parentElement.parentElement.children[2];
             let address = ticket.parentElement.parentElement.children[3];
             let workorder_action = null;
-            if (tasks[i].getElementsByClassName('open-workorder').length > 0) workorder_action = tasks[i].getElementsByClassName('open-workorder')[0];
-            else if (tasks[i].getElementsByClassName('start-workorder').length > 0) workorder_action = tasks[i].getElementsByClassName('start-workorder')[0];
-            else if (tasks[i].getElementsByClassName('updateworkorder').length > 0) workorder_action = tasks[i].getElementsByClassName('updateworkorder')[0];
+            if (tasks[i].getElementsByClassName('open-workorder').length > 0) {
+                workorder_action = tasks[i].getElementsByClassName('open-workorder')[0];
+            }
+            else if (tasks[i].getElementsByClassName('start-workorder').length > 0) {
+                workorder_action = tasks[i].getElementsByClassName('start-workorder')[0];
+            }
+            else if (tasks[i].getElementsByClassName('updateworkorder').length > 0) {
+                workorder_action = tasks[i].getElementsByClassName('updateworkorder')[0];
+                if (date.firstChild.textContent.trim() == "Repair") {
+                    workorder_action.addEventListener("click", function () {
+                        window.open('http://ants.inet.telenet.be/tools/modems/modemtest#modem=' + clientId, '_blank');
+                        window.open('https://spot.prd.apps.telenet.be/care/customer/' + clientId, '_blank');
+                    });
+                }
+            }
             else {
                 let el = document.createElement('a');
                 el.setAttribute('style', 'border:1px solid red;border-radius:4px !important;color:red;font-weight:bold;');
@@ -443,36 +456,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 tasks[i].getElementsByClassName('task_btns')[0].appendChild(workorder_action);
             }
 
-            // Generate QR urls
-            let qrSettings = {
-                text: '',
-                width: 200,
-                height: 200,
-                correctLevel: QRCode.CorrectLevel.H
-            };
-
-            for (let j = 0; j < tasks[i].getElementsByClassName('nav_btn').length; j++) {
-                tasks[i].getElementsByClassName('nav_btn')[j].addEventListener('click', function () {
-                    if (this.getElementsByClassName('nav_qr')[0].style.display == 'none')
-                        this.getElementsByClassName('nav_qr')[0].style.display = 'block';
-                    else
-                        this.getElementsByClassName('nav_qr')[0].style.display = 'none';
-                });
-            }
-
-            let all = address.textContent.split(',')[0].trim() + ' ' + address.textContent.split(',')[1].trim();
-            let URLAddress = encodeURI(all.replace(/\s+/g, ' ').trim());
-
-            qrSettings.text = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination=' + URLAddress;
-            new QRCode(document.getElementById('link_gmaps'), qrSettings);
-            document.getElementById('link_gmaps').removeAttribute('title');
-
-            qrSettings.text = 'https://www.waze.com/ul?navigate=yes&q=' + URLAddress;
-            new QRCode(document.getElementById('link_waze'), qrSettings);
-            document.getElementById('link_waze').removeAttribute('title');
-
-            tasks[i].closest('.col-md-12').removeAttribute('style');
-
             // Getting additional info
             // Remarks (we'll use this button to call the popup)
             let as = tasks[i].getElementsByTagName('a');
@@ -495,7 +478,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 data_ticket_details = btnContact.getAttribute('data-ticket-details');
             }
 
-
             // Taking over the popup
             document.getElementById('modal_remark_uniqueid_' + data_task_id).getElementsByClassName('modal-title')[0].textContent = '🐼 More info';
             let entity = tasks[i].getElementsByClassName('ticket-name-data')[0].textContent.split(' - ')[0].trim();
@@ -504,9 +486,48 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('modal_remark_uniqueid_' + data_task_id).getElementsByClassName('modal-body')[0].innerHTML +=
                 '<div class="row xtra_entity"><div class=" col-md-5" data-translatable="">Entity:</div><div class=" col-md-7"><i>' + entity + '</i></div></div>' +
                 '<div class="row xtra_tgid"><div class=" col-md-5" data-translatable="">Taskgroup ID:</div><div class=" col-md-7"><i>' + tgid + '</i></div></div>';
+
+            //genearate QR code, see function below
+            if (task == 0)
+                generateQRSettings(tasks[i], address);
+
+            //fetchTasksData();
         }
     };
 });
+
+//QR code
+function generateQRSettings(task, address) {
+    // Generate QR urls
+    let qrSettings = {
+        text: '',
+        width: 200,
+        height: 200,
+        correctLevel: QRCode.CorrectLevel.H
+    };
+
+    for (let j = 0; j < task.getElementsByClassName('nav_btn').length; j++) {
+        task.getElementsByClassName('nav_btn')[j].addEventListener('click', function () {
+            if (this.getElementsByClassName('nav_qr')[0].style.display == 'none')
+                this.getElementsByClassName('nav_qr')[0].style.display = 'block';
+            else
+                this.getElementsByClassName('nav_qr')[0].style.display = 'none';
+        });
+    }
+
+    let all = address.textContent.split(',')[0].trim() + ' ' + address.textContent.split(',')[1].trim();
+    let URLAddress = encodeURI(all.replace(/\s+/g, ' ').trim());
+
+    qrSettings.text = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination=' + URLAddress;
+    new QRCode(document.getElementById('link_gmaps'), qrSettings);
+    document.getElementById('link_gmaps').removeAttribute('title');
+
+    qrSettings.text = 'https://www.waze.com/ul?navigate=yes&q=' + URLAddress;
+    new QRCode(document.getElementById('link_waze'), qrSettings);
+    document.getElementById('link_waze').removeAttribute('title');
+
+    task.closest('.col-md-12').removeAttribute('style');
+}
 
 //Save Planning
 function savePlanning(tasks) {
@@ -567,5 +588,26 @@ function savePlanning(tasks) {
         window.postMessage(JSON.parse(localStorage.getItem('planning')), '*');
     }
 
-    fetchTasksData();
+    
+}
+
+function addTask(technicianNumber, taskType, taskStatus) {
+    fetch('localhost/add_task.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            technicianNumber: technicianNumber,
+            taskDescription: taskDescription,
+            taskStatus: taskStatus
+        })
+    })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data); // Server response
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }

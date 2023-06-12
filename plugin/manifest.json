@@ -2,7 +2,7 @@
 {
   "manifest_version": 2,
   "name": "Connect-IT SFX",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Custom SFX plugin made for Connect-IT",
   "icons": {
     "96": "/images/logo.png"

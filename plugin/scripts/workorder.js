@@ -1,13 +1,13 @@
 $(document).ready(function () {
     var navbar_nav = document.getElementsByClassName('navbar-nav')[0];
     var clientId = $('#WorkorderTicketName').val();
-    var TaskStatus = $('.ui-state-active a').first().text();
+    var TaskStatus = $('.ui-state-active').first().text().trim();
     var interventionTitle = $('.workorder_title').last().text().trim();
     var splitText = interventionTitle.split(' / ');
     var interventionType = splitText[splitText.length - 1];
     console.log(interventionType);
 
-    // Create an object to store both variables
+    // Create an object to store variables
     var taskDetails = {
         clientId: clientId,
         interventionType: interventionType,

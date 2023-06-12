@@ -41,6 +41,11 @@ $(document).ready(function () {
                     var radioInstall = document.querySelector('input[type="radio"][name="installatie"][value="1"]');
                     var radioRepair = document.querySelector('input[type="radio"][name="installatie"][value="20"]');
 
+                    // geinstalleerde hoofdmaterialen radio knoppen
+                    var radioInstall = document.querySelector('input[type="checkbox"][name="NIU"]');
+                    var radioRepair = document.querySelector('input[type="checkbox"][name="MODEM"]');
+                    var radioRepair = document.querySelector('input[type="checkbox"][name="DTV"]');
+
                     document.getElementById("klantid").value = clientId;
 
                     switch (interventionType.toLowerCase()) {
@@ -90,9 +95,9 @@ $(document).ready(function () {
                     }
                 }
 
-                //chrome.storage.local.remove('taskDetails', function () {
-                    //console.log('Item "taskDetails" has been removed from local storage.');
-                //});
+                chrome.storage.local.remove('taskDetails', function () {
+                    console.log('Item "taskDetails" has been removed from local storage.');
+                });
             });
         }
     });
